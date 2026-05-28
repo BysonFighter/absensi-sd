@@ -1,12 +1,9 @@
 name = "absensi-sd"
-main = "src/index.js"
+main = "index.js"
 compatibility_date = "2026-05-28"
-
-[assets]
-directory = "./public"
-binding = "ASSETS"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "d1"
 database_id = "82a1e3ce-fab8-49dd-8601-d9e11c3d8c9b"
+
