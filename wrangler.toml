@@ -1,0 +1,7 @@
+name = "absensi-sd"
+compatibility_date = "2026-05-28"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "d1"
+database_id = "ISI_DATABASE_ID"
