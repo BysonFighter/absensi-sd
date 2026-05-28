@@ -26,7 +26,7 @@ async function getUser(request, env) {
   if (!token) return null;
 
   const row = await env.DB.prepare(
-    `SELECT s.token, s.expires_at, u.id, u.username, u.full_name, u.class_code, u.role
+    `SELECT s.token, s.expires_at, u.id, u.username, u.password_hash, u.full_name, u.class_code, u.role
      FROM sessions s
      JOIN users u ON u.id = s.user_id
      WHERE s.token = ?`
