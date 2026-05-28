@@ -42,7 +42,7 @@ async function getUser(request, env) {
   return row;
 }
 
-function esc(s) {
+function escapeHtml(s) {
   return String(s)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -390,7 +390,7 @@ function renderDashboard() {
         <div class="top">
           <div>
             <h1>Absensi SD</h1>
-            <p class="small" style="margin-top:6px">Login sebagai <b>\${esc(state.user.full_name)}</b> • Kelas \${esc(state.user.class_code)}</p>
+            <p class="small" style="margin-top:6px">Login sebagai <b>\${escapeHtml(state.user.full_name)}</b> • Kelas \${escapeHtml(state.user.class_code)}</p>
           </div>
           <button class="iconbtn" id="logoutBtn">Keluar</button>
         </div>
@@ -417,7 +417,7 @@ function renderDashboard() {
       <div class="card">
         <div class="search">
           <span>🔎</span>
-          <input id="search" placeholder="Cari nama / NISN" value="\${esc(state.query)}">
+          <input id="search" placeholder="Cari nama / NISN" value="\${escapeHtml(state.query)}">
         </div>
 
         <div class="list" id="studentList"></div>
@@ -437,7 +437,7 @@ function renderDashboard() {
         <div class="top" style="align-items:center">
           <div>
             <h2>Options</h2>
-            <p class="small" style="margin-top:4px">Aksi cepat untuk \${esc(state.user.class_code)}</p>
+            <p class="small" style="margin-top:4px">Aksi cepat untuk \${escapeHtml(state.user.class_code)}</p>
           </div>
           <button class="iconbtn" id="closeSheet">✕</button>
         </div>
@@ -520,8 +520,8 @@ function renderStudentList() {
     const cur = state.attendance[s.id] || "";
     return \`
       <div class="student">
-        <div class="meta">No \${s.number || "-"} • NISN \${esc(s.nisn)}</div>
-        <div class="name">\${esc(s.name)}</div>
+        <div class="meta">No \${s.number || "-"} • NISN \${escapeHtml(s.nisn)}</div>
+        <div class="name">\${escapeHtml(s.name)}</div>
         <div class="badge">Status: \${cur || "Belum"}</div>
         <div class="row">
           \${STATUS.map((st) => \`
@@ -843,7 +843,7 @@ async function handleApi(request, env) {
 }
 
 export default {
-  function esc(text) {
+  function escapeHtml(text) {
   return String(text || "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
