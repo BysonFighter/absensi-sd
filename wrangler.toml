@@ -1,5 +1,9 @@
 name = "absensi-sd"
+main = "src/index.js"
 compatibility_date = "2026-05-28"
+
+[assets]
+directory = "./public"
 
 [[d1_databases]]
 binding = "DB"
